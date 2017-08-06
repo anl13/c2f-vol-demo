@@ -25,7 +25,9 @@ sudo apt-get install python-h5py python-hdf5storage (maybe optional)
 
 4. Torch7
 Follow the installation guide [torch install][1] 
-Theoratically, luajit and luarocks are installed by Torch installation file. 
+Theoratically, luajit and luarocks are installed by Torch installation file.
+Attention: when install Torch7, do not `sudo`. 
+
 6. hdf5 for lua 
 Torch7 install most libraries for lua.
 However, `hdf5` for `lua` is not installed. 
