@@ -45,10 +45,11 @@ W = maxLocation(joints(1:2,:), bbox, [outputRes, outputRes]);
 Zrel = Zcen(joints(3, :));
 
 % camera calibration matrix 
-K = 1000 * [ 1.1497,      0, 0.5088;
-0       , 1.1476, 0.5081; 
-0       ,      0, 0.0010]; 
+K_kinect2 = [1063.26, 0, 969.429; 
+    0, 1062.1, 546.539; 
+    0, 0, 1]; 
 
+K = K_kinect2;
 % reconstruct 3D skeleton 
 if recType == 1
     % S = estimate3D(W, Zrel, K, zroot); 

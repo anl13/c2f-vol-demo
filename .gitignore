@@ -1,7 +1,12 @@
 data/
+exp/
+pred/
+
+*.png
 *.h5
 *.t7
 
 
 # tempfiles 
 *.swp
+*~
