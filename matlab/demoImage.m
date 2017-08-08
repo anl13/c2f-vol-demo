@@ -8,9 +8,9 @@ startup;
 
 %  define paths for basic skeleton info, e.g. skeleton topology definition, limblength 
 %  prior, etc. As well, it stores the ground truth of demo image.
-annotfile = '../data/h36m-sample/annot/valid.mat'; 
-load(annotfile);  % loaded data stored in 'annot' variable
-disp(annotfile);
+% annotfile = '../data/h36m-sample/annot/valid.mat'; 
+% load(annotfile);  % loaded data stored in 'annot' variable
+% disp(annotfile);
 %  imagepath and predictionpath 
 % imagepath = '../data/h36m-sample/images/S9_Posing_1.54138969_000001.jpg';
 % predpath = '../test.h5';
@@ -37,8 +37,15 @@ I = imread(imagename);
 bbox = getHGbbox(center, scale);
 img_crop = cropImage(I, bbox);
 
-% read network's output 
+% read network's output and plot it
 joints = hdf5read(predpath, 'preds3D');
+x = joints(1, :);
+y = joints(2, :);
+z = joints(3, :);
+figure(1); 
+% scatter3(x,y,z, ones(size(x)), 'filled');
+plot3(x,y,z,'.');
+
 % pixel location
 W = maxLocation(joints(1:2,:), bbox, [outputRes, outputRes]);
 % depth(relative to root) 
@@ -58,6 +65,7 @@ elseif recType == 2
 elseif recType == 3
     S = estimate3D (W, Zrel, K, Ltr, skel);
 end
+
 
 % visualization 
 nPlot = 3;        % plot 3 sub windows in main window 

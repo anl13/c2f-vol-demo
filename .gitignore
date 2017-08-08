@@ -2,6 +2,10 @@ data/
 exp/
 pred/
 
+*.jpg
+*.mp4
+*.mj2
+*.avi
 *.png
 *.h5
 *.t7

@@ -9,9 +9,9 @@ paths.dofile('img.lua')
 
 -- used for load skeleton annotation 
 -- TODO: remove these dependency on irrelevant dataset name 
-dateset = 'h36m-sample' 
-set = 'valid'
-a = loadAnnotations('h36m-sample')
+-- dateset = 'h36m-sample' 
+-- set = 'valid'
+-- a = loadAnnotations('h36m-sample')
 
 -- load pretrained model 
 m = torch.load('c2f-volumetric-h36m.t7')

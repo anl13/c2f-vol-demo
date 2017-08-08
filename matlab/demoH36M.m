@@ -27,8 +27,8 @@ nPlot = 3;
 h = figure('position',[300 300 200*nPlot 200]);
 
 % write current image to video 
-video_name = 'normal.mp4'; 
-v = VideoWriter(video_name, 'Archival');
+video_name = 'larger_window'; 
+v = VideoWriter(video_name, 'Motion JPEG AVI');
 v.FrameRate = 5;
 v.VideoCompressionMethod
 open(v);
@@ -78,10 +78,10 @@ for img_i = 1:length(annot.imgname)
     vis3Dskel(S,skel,'viewpoint',[-90 0]);
     camroll(10);
     
-    frame = getframe(gcf); % gcf is whole plot handler
+    frame = getframe(gcf); % gcf is whole plot handler; gca is subplot handler
      
     im = frame2im(frame);
-    imwrite(im, sprintf('img_%03d.png', img_i));
+    % imwrite(im, sprintf('img_%03d.png', img_i));
     if img_i >1
     writeVideo(v, im); 
     end
