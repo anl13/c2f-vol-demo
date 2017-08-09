@@ -1,7 +1,7 @@
 %% created on 2017/Aug/05 by An Liang, THU
 %  used to display a single image with 3D skeleton extracted by c2f-volumetric network.
 %  i.e. show only one '.h5' file which stores skeleton coordinates. 
-function [] = demoImage(imagename, predpath, center, scale)
+function [] = demoImage(imagename, predpath, center, scale, K)
 
 %  start; 
 startup; 
@@ -38,25 +38,27 @@ bbox = getHGbbox(center, scale);
 img_crop = cropImage(I, bbox);
 
 % read network's output and plot it
+r = [2,3,4,12,13,14]; % right part of body, in red
+l = [5,6,7,15,16,17]; % left part of body , in green 
+b = [1,8,9,10,11];    % central part of body, in blue 
 joints = hdf5read(predpath, 'preds3D');
 x = joints(1, :);
-y = joints(2, :);
+y = 64 - joints(2, :); % flip y 
 z = joints(3, :);
-figure(1); 
+% figure(1); 
 % scatter3(x,y,z, ones(size(x)), 'filled');
-plot3(x,y,z,'.');
+% plot3(x,y,z,'.');
+figure(2);
+axis([0 64 0 64]);
+plot(x(r),y(r),'.r','MarkerSize', 20); hold on;
+plot(x(l),y(l),'.g','MarkerSize', 20); hold on;
+plot(x(b),y(b),'.b','MarkerSize', 20); 
 
 % pixel location
 W = maxLocation(joints(1:2,:), bbox, [outputRes, outputRes]);
 % depth(relative to root) 
 Zrel = Zcen(joints(3, :));
 
-% camera calibration matrix 
-K_kinect2 = [1063.26, 0, 969.429; 
-    0, 1062.1, 546.539; 
-    0, 0, 1]; 
-
-K = K_kinect2;
 % reconstruct 3D skeleton 
 if recType == 1
     % S = estimate3D(W, Zrel, K, zroot); 
@@ -65,7 +67,6 @@ elseif recType == 2
 elseif recType == 3
     S = estimate3D (W, Zrel, K, Ltr, skel);
 end
-
 
 % visualization 
 nPlot = 3;        % plot 3 sub windows in main window 
