@@ -49,10 +49,11 @@ z = joints(3, :);
 % scatter3(x,y,z, ones(size(x)), 'filled');
 % plot3(x,y,z,'.');
 figure(2);
-axis([0 64 0 64]);
+
 plot(x(r),y(r),'.r','MarkerSize', 20); hold on;
 plot(x(l),y(l),'.g','MarkerSize', 20); hold on;
 plot(x(b),y(b),'.b','MarkerSize', 20); 
+axis([0 64 0 64]);
 
 % pixel location
 W = maxLocation(joints(1:2,:), bbox, [outputRes, outputRes]);
