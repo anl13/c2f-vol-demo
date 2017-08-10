@@ -14,12 +14,14 @@ if dataset == 'h36m' then
     -- Evaluation on users S9 and S11 of Human3.6M dataset
     -- Replicating results in our paper
     a = loadAnnotations('h36m')
-    m = torch.load('c2f-volumetric-h36m.t7')   -- Load pre-trained model
+    -- m = torch.load('c2f-volumetric-h36m.t7')   -- Load pre-trained model
+    m = torch.load('optimState.t7')
 
 elseif dataset == 'h36m-sample' then
     -- Small set of Human3.6M for action Posing_1 of subject S9 and camera 55011271 
     a = loadAnnotations('h36m-sample')
-    m = torch.load('c2f-volumetric-h36m.t7')   -- Load pre-trained model
+    -- m = torch.load('c2f-volumetric-h36m.t7')   -- Load pre-trained model
+    m = torch.load('model_145.t7')
 
 else
     print("Please use one of the following input arguments:")

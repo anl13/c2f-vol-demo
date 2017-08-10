@@ -15,6 +15,7 @@ paths.dofile('img.lua')
 
 -- load pretrained model 
 m = torch.load('c2f-volumetric-h36m.t7')
+-- m=torch.load('/home/al17/c2f-vol-train/exp/h36m/test-run-c2f/model_170.t7')
 m:cuda() -- change to cuda mode 
 
 
