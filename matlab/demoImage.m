@@ -47,16 +47,16 @@ y = 64 - joints(2, :); % flip y
 z = joints(3, :);
 figure(1); 
 % scatter3(x,y,z, ones(size(x)), 'filled');
-plot(y(r),z(r), '.r','MarkerSize', 20); hold on;
-plot(y(l),z(l), '.g','MarkerSize', 20); hold on;
+plot(y(r),z(r), '.g','MarkerSize', 20); hold on;
+plot(y(l),z(l), '.r','MarkerSize', 20); hold on;
 plot(y(b),z(b), '.b','MarkerSize', 20); 
 axis([0 64 0 64]);
 xlabel('y');ylabel('z');% zlabel('z');
 
 figure(2);
 
-plot(x(r),y(r),'.r','MarkerSize', 20); hold on;
-plot(x(l),y(l),'.g','MarkerSize', 20); hold on;
+plot(x(r),y(r),'.g','MarkerSize', 20); hold on;
+plot(x(l),y(l),'.r','MarkerSize', 20); hold on;
 plot(x(b),y(b),'.b','MarkerSize', 20); 
 axis([0 64 0 64]);xlabel('x');ylabel('y');
 
